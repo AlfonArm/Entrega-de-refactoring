@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
-	public List<Llamada> llamadas = new ArrayList<Llamada>();
+	private List<Llamada> llamadas = new ArrayList<Llamada>();
 	private String tipo;
 	private String nombre;
 	private String numeroTelefono;
@@ -41,4 +41,13 @@ public class Cliente {
 	public void setDNI(String dni) {
 		this.dni = dni;
 	}
+	
+	public List<Llamada> getLlamadas () { 
+		return this.llamadas;
+	}
+
+	public void setLlamadas (List<Llamada> llamadas) {
+		this.llamadas = llamadas;
+	}
+
 }
