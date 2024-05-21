@@ -51,7 +51,7 @@ public class Empresa {
 	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
 		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
 		llamadas.add(llamada);
-		origen.getLlamadas().add(llamada);
+		origen.addLlamada(llamada);
 		return llamada;
 	}
 
