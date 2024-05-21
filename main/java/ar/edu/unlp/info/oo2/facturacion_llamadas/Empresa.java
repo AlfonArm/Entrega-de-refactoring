@@ -32,11 +32,11 @@ public class Empresa {
 		Cliente var = null;
 		if (tipo.equals("fisica")) {
 			String tel = this.obtenerNumeroLibre();
-			var = new Cliente (tipo, nombre, tel, null, data);
+			var = new Cliente (tipo, nombre, tel, data);
 		}
 		else if (tipo.equals("juridica")) {
 			String tel = this.obtenerNumeroLibre();
-			var = new Cliente (tipo, nombre, tel, null, data);
+			var = new Cliente (tipo, nombre, tel, data);
 		}
 		clientes.add(var);
 		return var;

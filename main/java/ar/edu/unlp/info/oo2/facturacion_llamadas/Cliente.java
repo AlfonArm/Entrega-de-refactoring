@@ -9,14 +9,12 @@ public class Cliente {
 	private String tipo;
 	private String nombre;
 	private String numeroTelefono;
-	private String cuit;
 	private String dni;
 
-	public Cliente (String tipo, String nombre, String numeroTelefono, String cuit, String dni) {
+	public Cliente (String tipo, String nombre, String numeroTelefono, String dni) {
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.numeroTelefono = numeroTelefono;
-		this.cuit = cuit;
 		this.dni = dni;
 	}
 	public String getTipo() {
@@ -31,9 +29,6 @@ public class Cliente {
 		return numeroTelefono;
 	}
 
-	public String getCuit() {
-		return cuit;
-	}
 
 	public String getDNI() {
 		return dni;
