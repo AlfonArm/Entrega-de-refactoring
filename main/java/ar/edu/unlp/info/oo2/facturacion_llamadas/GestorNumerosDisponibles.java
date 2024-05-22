@@ -31,9 +31,7 @@ public class GestorNumerosDisponibles {
 			encontre= true;
 			return encontre;
 		}
-		else {
-			encontre= false;
-			return encontre;
-		}
+		encontre= false;
+		return encontre;
 	}
 }
