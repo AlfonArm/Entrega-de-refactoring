@@ -13,6 +13,7 @@ public class GestorNumerosDisponibles {
 		return lineas;
 	}
 
+	// replace type code with subclasses -> replace conditional with polymorfism
 	public String obtenerNumeroLibre() {
 		String linea;
 		switch (tipoGenerador) {

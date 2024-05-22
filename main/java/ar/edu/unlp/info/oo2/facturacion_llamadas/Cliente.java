@@ -6,34 +6,17 @@ import java.util.List;
 
 public class Cliente {
 	private List<Llamada> llamadas = new ArrayList<Llamada>();
-	// espera a pólimorfismo (y el añadido de Persona también)
-	private String tipo;
-	private String nombre;
+	private Persona persona;
 	private String numeroTelefono;
-	private String dni;
 
-	public Cliente (String tipo, String nombre, String numeroTelefono, String dni) {
-		this.tipo = tipo;
-		this.nombre = nombre;
-		this.numeroTelefono = numeroTelefono;
-		this.dni = dni;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-
-	public String getNombre() {
-		return nombre;
+	public Cliente (String numeroTelefono, Persona persona) {
+		this.persona = persona;
 	}
 
 	public String getNumeroTelefono() {
 		return numeroTelefono;
 	}
-
-	public String getDNI() {
-		return dni;
-	}
-
+	
 	public List<Llamada> getLlamadas () { 
 		return Collections.unmodifiableList(this.llamadas);
 	}
@@ -47,11 +30,9 @@ public class Cliente {
 	}
 	
 	public double calcularDescuento () {
-		if (this.tipo == "fisica") {
-			return Empresa.descuentoFis;
-		} else if(this.tipo == "juridica") {
-			return Empresa.descuentoJur;
-		}
-		return 0.0;
+		return this.getPersona().calcularDescuento();
+	}
+	private Persona getPersona() {
+		return this.persona;
 	}
 }

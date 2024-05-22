@@ -28,21 +28,23 @@ public class Empresa {
 		return guia.obtenerNumeroLibre();
 	}
 
-	public Cliente registrarUsuario(String data, String nombre, String tipo) {
-		Cliente var = null;
-		if (tipo.equals("fisica")) {
-			String tel = this.obtenerNumeroLibre();
-			var = new Cliente (tipo, nombre, tel, data);
-		}
-		else if (tipo.equals("juridica")) {
-			String tel = this.obtenerNumeroLibre();
-			var = new Cliente (tipo, nombre, tel, data);
-		}
+	public Cliente registrarPersonaFísica (String dni, String nombre) {
+		return this.registrarUsuario(new PersonaFísica (nombre, dni)); 
+	}
+	
+	public Cliente registrarPersonaJurídica (String cuil, String nombre) {
+		return this.registrarUsuario(new PersonaJurídica (nombre, cuil)); 
+	}
+	
+	public Cliente registrarUsuario(Persona persona) {
+		Cliente var  = null;
+		String tel = this.obtenerNumeroLibre();
+		var = new Cliente (tel, persona);
 		clientes.add(var);
 		return var;
 	}
 
-	public Llamada registrarLlamada(Cliente origen, Cliente destino, String t, int duracion) {
+	public Llamada registrarLlamada(Cliente origen, Cliente destino, TipoLlamada t, int duracion) {
 		Llamada llamada = new Llamada(t, origen.getNumeroTelefono(), destino.getNumeroTelefono(), duracion);
 		llamadas.add(llamada);
 		origen.addLlamada(llamada);
@@ -50,6 +52,7 @@ public class Empresa {
 	}
 
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
+		// acá meter replace temp with query y un stream bien gordo
 		double c = 0;
 		for (Llamada l : cliente.getLlamadas()) {
 			c += this.calcularMontoDeUnaLlamada(l, cliente);
@@ -57,7 +60,6 @@ public class Empresa {
 		return c;
 	}
 	
-	// ahora que tenemos dos clases distintas, se podría quitar este método que parece un intermediario más que otra cosa
 	private double calcularMontoDeUnaLlamada (Llamada l, Cliente cliente) {
 		return (1 - cliente.calcularDescuento ()) * l.calcularMontoBase();
 	}
