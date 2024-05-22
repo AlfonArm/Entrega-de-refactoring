@@ -29,8 +29,15 @@ public class Empresa {
 	}
 
 	public Cliente registrarUsuario(String data, String nombre, String tipo) {
-		String tel = this.obtenerNumeroLibre();
-		Cliente var = new Cliente (tipo, nombre, tel, data);
+		Cliente var = null;
+		if (tipo.equals("fisica")) {
+			String tel = this.obtenerNumeroLibre();
+			var = new Cliente (tipo, nombre, tel, data);
+		}
+		else if (tipo.equals("juridica")) {
+			String tel = this.obtenerNumeroLibre();
+			var = new Cliente (tipo, nombre, tel, data);
+		}
 		clientes.add(var);
 		return var;
 	}
