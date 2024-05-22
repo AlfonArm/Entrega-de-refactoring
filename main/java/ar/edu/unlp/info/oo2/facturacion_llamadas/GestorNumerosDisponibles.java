@@ -25,13 +25,10 @@ public class GestorNumerosDisponibles {
 	
 	//query
 	public boolean agregarNumeroTelefono(String str) {
-		boolean encontre = this.getLineas().contains(str);
-		if (!encontre) {
+		if (!this.getLineas().contains(str)) {
 			this.getLineas().add(str);
-			encontre= true;
-			return encontre;
+			return true;
 		}
-		encontre= false;
-		return encontre;
+		return false;
 	}
 }

@@ -37,12 +37,9 @@ public class Cliente {
 	}
 	
 	public double calcularMontoTotalLlamadas() {
-		// acá meter replace temp with query y un stream bien gordo
-		double c = 0;
-		for (Llamada l : this.getLlamadas()) {
-			c += this.calcularMontoDeUnaLlamada(l);
-		}
-		return c;
+		return this.getLlamadas().stream()
+				.mapToDouble(l -> this.calcularMontoDeUnaLlamada(l))
+				.sum();
 	}
 	
 	private double calcularMontoDeUnaLlamada (Llamada l) {

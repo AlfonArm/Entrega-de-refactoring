@@ -11,7 +11,6 @@ public class Empresa {
 	static double descuentoJur = 0.15;
 	static double descuentoFis = 0;
 
-	// envidiaaaa (ya lo moví también)
 	public boolean agregarNumeroTelefono(String str) {
 		return this.guia.agregarNumeroTelefono(str);
 	}
@@ -28,13 +27,10 @@ public class Empresa {
 		return this.registrarUsuario(new PersonaJurídica (nombre, cuil)); 
 	}
 	
-	// malísimos los nombres query
 	public Cliente registrarUsuario(Persona persona) {
-		Cliente var  = null;
-		String tel = this.obtenerNumeroLibre();
-		var = new Cliente (tel, persona);
-		clientes.add(var);
-		return var;
+		Cliente cliente = new Cliente (this.obtenerNumeroLibre(), persona);
+		clientes.add(cliente);
+		return cliente;
 	}
 
 	public Llamada registrarLlamada(Cliente origen, Cliente destino, TipoLlamada t, int duracion) {
@@ -44,7 +40,6 @@ public class Empresa {
 		return llamada;
 	}
 
-	// envidiaaa (lo dejo para no romper el test, pero ya lo moví :3)
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
 		return cliente.calcularMontoTotalLlamadas();
 	}

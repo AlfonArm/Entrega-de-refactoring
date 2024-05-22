@@ -4,6 +4,4 @@ import java.util.SortedSet;
 
 public abstract class GeneradorNúmeros {
 	public abstract String obtenerNúmeroLibre(SortedSet<String> lineas);
-	
-	
 }
