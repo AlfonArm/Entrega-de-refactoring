@@ -35,4 +35,17 @@ public class Cliente {
 	private Persona getPersona() {
 		return this.persona;
 	}
+	
+	public double calcularMontoTotalLlamadas() {
+		// acá meter replace temp with query y un stream bien gordo
+		double c = 0;
+		for (Llamada l : this.getLlamadas()) {
+			c += this.calcularMontoDeUnaLlamada(l);
+		}
+		return c;
+	}
+	
+	private double calcularMontoDeUnaLlamada (Llamada l) {
+		return (1 - this.calcularDescuento ()) * l.calcularMontoBase();
+	}
 }

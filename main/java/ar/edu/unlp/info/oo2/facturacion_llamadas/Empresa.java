@@ -11,17 +11,9 @@ public class Empresa {
 	static double descuentoJur = 0.15;
 	static double descuentoFis = 0;
 
+	// envidiaaaa (ya lo moví también)
 	public boolean agregarNumeroTelefono(String str) {
-		boolean encontre = guia.getLineas().contains(str);
-		if (!encontre) {
-			guia.getLineas().add(str);
-			encontre= true;
-			return encontre;
-		}
-		else {
-			encontre= false;
-			return encontre;
-		}
+		return this.guia.agregarNumeroTelefono(str);
 	}
 
 	public String obtenerNumeroLibre() {
@@ -36,6 +28,7 @@ public class Empresa {
 		return this.registrarUsuario(new PersonaJurídica (nombre, cuil)); 
 	}
 	
+	// malísimos los nombres query
 	public Cliente registrarUsuario(Persona persona) {
 		Cliente var  = null;
 		String tel = this.obtenerNumeroLibre();
@@ -51,17 +44,9 @@ public class Empresa {
 		return llamada;
 	}
 
+	// envidiaaa (lo dejo para no romper el test, pero ya lo moví :3)
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
-		// acá meter replace temp with query y un stream bien gordo
-		double c = 0;
-		for (Llamada l : cliente.getLlamadas()) {
-			c += this.calcularMontoDeUnaLlamada(l, cliente);
-		}
-		return c;
-	}
-	
-	private double calcularMontoDeUnaLlamada (Llamada l, Cliente cliente) {
-		return (1 - cliente.calcularDescuento ()) * l.calcularMontoBase();
+		return cliente.calcularMontoTotalLlamadas();
 	}
 
 	public int cantidadDeUsuarios() {

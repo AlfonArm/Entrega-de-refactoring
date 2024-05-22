@@ -7,7 +7,6 @@ public class Llamada {
 	private int duracion;
 
 	public Llamada(TipoLlamada tipoLlamada, String origen, String destino, int duracion) {
-		// espera a polimorfismo
 		this.tipoDeLlamada = tipoLlamada;
 		this.origen= origen;
 		this.destino= destino;
@@ -30,7 +29,6 @@ public class Llamada {
 		return origen;
 	}
 	
-	// strategy
 	public double calcularMontoBase () {
 		return this.tipoDeLlamada.calcularMontoBase(this.duracion);
 	}
