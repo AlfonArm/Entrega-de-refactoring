@@ -52,33 +52,14 @@ public class Empresa {
 	public double calcularMontoTotalLlamadas(Cliente cliente) {
 		double c = 0;
 		for (Llamada l : cliente.getLlamadas()) {
-			c += this.calcularMontoDeUnaLlamada(l, cliente.getTipo());
+			c += this.calcularMontoDeUnaLlamada(l, cliente);
 		}
 		return c;
 	}
 	
-	private double calcularMontoDeUnaLlamada (Llamada l, String tipoCliente) {
-		return this.calcularMontoBaseLlamada(l) * (1 - this.calcularDescuentoCliente(tipoCliente)); // pequeño cambio lógico de calidad de vida
-	}
-	
-	private double calcularDescuentoCliente (String tipoCliente) {
-		if (tipoCliente == "fisica") {
-			return descuentoFis;
-		} else if(tipoCliente == "juridica") {
-			return descuentoJur;
-		}
-		return 0.0;
-	}
-	
-	private double calcularMontoBaseLlamada (Llamada l) {
-		if (l.getTipoDeLlamada() == "nacional") {
-			// el precio es de 3 pesos por segundo más IVA sin adicional por establecer la llamada
-			return l.getDuracion() * 3 + (l.getDuracion() * 3 * 0.21);
-		} else if (l.getTipoDeLlamada() == "internacional") {
-			// el precio es de 150 pesos por segundo más IVA más 50 pesos por establecer la llamada
-			return l.getDuracion() * 150 + (l.getDuracion() * 150 * 0.21) + 50;
-		}
-		return 0.0;
+	// ahora que tenemos dos clases distintas, se podría quitar este método que parece un intermediario más que otra cosa
+	private double calcularMontoDeUnaLlamada (Llamada l, Cliente cliente) {
+		return (1 - cliente.calcularDescuento ()) * l.calcularMontoBase();
 	}
 
 	public int cantidadDeUsuarios() {
