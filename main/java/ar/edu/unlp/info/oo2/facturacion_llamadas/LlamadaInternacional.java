@@ -3,7 +3,10 @@ package ar.edu.unlp.info.oo2.facturacion_llamadas;
 public class LlamadaInternacional implements TipoLlamada {
 
 	public double calcularMontoBase(Integer duración) {
-		return duración * 150 + (duración * 150 * 0.21) + 50;
+		int costoPorMinuto = 150;
+		double porcentajeImpuestoIva = 0.21;
+		int costoFijo = 50;
+		return duración * costoPorMinuto + (duración * costoPorMinuto * porcentajeImpuestoIva) + costoFijo;
 	}
 
 }
