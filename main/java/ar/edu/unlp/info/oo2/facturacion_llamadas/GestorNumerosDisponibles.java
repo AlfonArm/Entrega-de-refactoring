@@ -25,10 +25,6 @@ public class GestorNumerosDisponibles {
 	
 	//query
 	public boolean agregarNumeroTelefono(String str) {
-		if (!this.getLineas().contains(str)) {
-			this.getLineas().add(str);
-			return true;
-		}
-		return false;
+		return this.getLineas().add(str);
 	}
 }
